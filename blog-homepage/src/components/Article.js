@@ -1,6 +1,8 @@
+import classes from "./Article.module.css"
 import { useState } from "react"
 import {BsBookmarkFill} from "react-icons/bs"
 import {AiFillSound, AiFillStar} from "react-icons/ai"
+import PropTypes from "prop-types"
 
 function Article({article, articleImage, mainContainer, articleInfo}) {
   let [bookmark, setBookmark] = useState(false)
@@ -11,14 +13,14 @@ function Article({article, articleImage, mainContainer, articleInfo}) {
     setBookmark(prevState => !prevState)
   }
   return (
-    <div className={mainContainer}>
-      <div className={articleImage}>
+    <div className={classes[mainContainer]}>
+      <div className={classes[articleImage]}>
         <a href={article.link} target="_blank">
           <img src={article.image} alt={article.title} />
         </a>
       </div>
-      <div className={articleInfo}>
-        <div className={article.hasAudioAvailable ? "icon-container-audio" : "icon-container"}>
+      <div className={classes[articleInfo]}>
+        <div className={article.hasAudioAvailable ? classes["icon-container-audio"] : classes["icon-container"]}>
           {article.hasAudioAvailable && <p><AiFillSound /> Audio available</p>}
           {article.memberPreview && <p><AiFillStar /></p>}
         </div>
@@ -30,10 +32,10 @@ function Article({article, articleImage, mainContainer, articleInfo}) {
             <p>{article.description}</p>
           </a>
         </div>
-        <div className="author-container">
-          <div className="author-image">
+        <div className={classes["author-container"]}>
+          <div className={classes["author-image"]}>
             <img 
-              className={article.author.isMediumMember ? "author-image-outline" : undefined} 
+              className={article.author.isMediumMember ? classes["author-image-outline"] : undefined} 
               src={article.author.image} 
               alt={article.author.name} 
             />
@@ -43,12 +45,19 @@ function Article({article, articleImage, mainContainer, articleInfo}) {
             <p>{`${month} ${date}`} - {article.minutesToRead} min read</p>
           </div>
           <div onClick={handleClick}>
-            <BsBookmarkFill className={bookmark ? "bookmark" : undefined} />
+            <BsBookmarkFill className={bookmark ? classes["bookmark"] : undefined} />
           </div>
         </div>
       </div>
     </div>
   )
+}
+
+Article.propTypes = {
+  article: PropTypes.object.isRequired,
+  articleImage: PropTypes.string.isRequired,
+  mainContainer: PropTypes.string.isRequired,
+  articleInfo: PropTypes.string.isRequired
 }
 
 export default Article

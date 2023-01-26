@@ -1,3 +1,4 @@
+import classes from "./App.module.css"
 import yourArticles from "./data/your-articles.json"
 import missedArticles from "./data/missed-articles.json"
 import Article from "./components/Article"
@@ -18,13 +19,13 @@ function App() {
     articleInfo="article-info-2"
   />)
   return (
-    <div>
+    <div className={classes.container}>
       <h3>For you</h3>
-      <div className="grid-container">
+      <div className={classes["grid-container"]}> 
         {result}
       </div>
       <h3>In case you missed it</h3>
-      <div className="grid-container-2">
+      <div className={classes["grid-container-2"]}>
         {resultMissed}
       </div>
     </div>

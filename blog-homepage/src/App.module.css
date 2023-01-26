@@ -1,0 +1,19 @@
+.container {
+  width: 80%;
+  margin: 30px auto 50px;
+}
+.grid-container {
+  display: grid;
+  gap: 50px;
+  grid-template-columns: repeat(auto-fit, 530px);
+  grid-auto-rows: 350px;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+.grid-container-2 {
+  display: grid;
+  gap: 50px;
+  grid-template-columns: repeat(auto-fit, 350px);
+  grid-auto-rows: 500px;
+  justify-content: space-between;
+}
